@@ -1,3 +1,10 @@
+<?php
+include_once("./database/constants.php");
+if (!isset($_SESSION["userid"])) {
+	header("location:".DOMAIN."/");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +22,7 @@
 
 <?php include_once'./links_&_cdn.php';?>
 
-
+<script type="text/javascript" src="./js/main.js"></script>
 
 </head>
 <body>
@@ -74,7 +81,7 @@
       				<div class="card-body" >
 					        <h3 class="card-title">Category</h3>
 					        <p class="card-text">Manage your categoy and add new parent and sub categoy</p>
-					        <a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary"><i class="fa fa-puzzle-piece">&nbsp;</i>Add</a>
+					        <a href="categoy.php" data-toggle="modal" data-target="#form_category" class="btn btn-primary"><i class="fa fa-puzzle-piece">&nbsp;</i>Add</a>
 
 					        <a href="#" class="btn btn-primary"><i class="fa fa-sitemap">&nbsp;</i>Manage</a>
      					 </div>

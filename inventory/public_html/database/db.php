@@ -1,8 +1,27 @@
 <?php
 
-	// Defining Constants
-	define( 'HOST', 'localhost' );
-	define( 'DB', 'inventory' );
-	define( 'USER', 'root' );
-	define( 'PASS', '' );
+/**
+* 
+*/
+class Database
+{
+	private $con;
+	
+	public function connect(){
+		include_once("constants.php");
+		$this->con = new Mysqli(HOST,USER,PASS,DB);
+		if ($this->con) {
+			return $this->con;
+		}
+		return "DATABASE_CONNECTION_FAIL";
+	}
+
+	public function connectOracleDb(){
+		return null;
+	}
+}
+
+$db = new Database();
+$db->connect();
+
 ?>

@@ -7,11 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-home">&nbsp;</i>Home</a>
+          <a class="nav-link active" aria-current="page" href="index.php"><i class="fa fa-home">&nbsp;</i>Home</a>
         </li>
+
+
+         <?php
+          if (isset($_SESSION["userid"])) {
+            ?>
         <li class="nav-item active">
-          <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-user">&nbsp;</i>Logout</a>
+          <a class="nav-link active" aria-current="page" href="logout.php"><i class="fa fa-user">&nbsp;</i>Logout</a>
         </li>
+
+
+            <?php
+          }
+        ?>
       </ul>
     </div>
   </div>
