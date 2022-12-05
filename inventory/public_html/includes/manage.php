@@ -1,8 +1,6 @@
 <?php
 
-/**
-* 
-*/
+
 class Manage
 {
 	
@@ -36,13 +34,13 @@ class Manage
 	}
 
 	private function pagination($con,$table,$pno,$n){
-		$query = $con->query("SELECT COUNT(*) as rows FROM ".$table);
-		$row = mysqli_fetch_assoc($query);
+		$query = $con->query("SELECT COUNT(*) as row_count FROM ".$table);
+		$row_count  = mysqli_fetch_assoc($query);
 		//$totalRecords = 100000;
 		$pageno = $pno;
 		$numberOfRecordsPerPage = $n;
 
-		$last = ceil($row["rows"]/$numberOfRecordsPerPage);
+		$last = ceil($row_count["row_count"]/$numberOfRecordsPerPage);
 
 		$pagination = "<ul class='pagination'>";
 
