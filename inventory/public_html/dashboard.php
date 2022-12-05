@@ -11,16 +11,20 @@ if (!isset($_SESSION["userid"])) {
 	
 	<meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
 	<title>Inventory</title>
 
 	<!-- links & CDN -->
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+ 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<?php include_once'./links_&_cdn.php';?>
 
 <script type="text/javascript" src="./js/main.js"></script>
 
@@ -73,52 +77,46 @@ if (!isset($_SESSION["userid"])) {
 <br>
 <!--Category , Brand & Product-->
 <div class="container">
-	<div class="row">
-
-		<!--Category-->
-		<div class="col-md-4">
-						<div class="card">
-      				<div class="card-body" >
-					        <h3 class="card-title">Category</h3>
-					        <p class="card-text">Manage your categoy and add new parent and sub categoy</p>
-					        <a href="categoy.php" data-toggle="modal" data-target="#form_category" class="btn btn-primary"><i class="fa fa-puzzle-piece">&nbsp;</i>Add</a>
-
-					        <a href="#" class="btn btn-primary"><i class="fa fa-sitemap">&nbsp;</i>Manage</a>
-     					 </div>
-    				</div>			
-		</div>
-		<!--Brand-->
-		<div class="col-md-4">
-						<div class="card">
-      				<div class="card-body">
-					        <h3 class="card-title">Brand</h3>
-					        <p class="card-text">Manage your categoy and add new parent and sub categoy</p>
-					        <a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-primary"><i class="fa fa-puzzle-piece">&nbsp;</i>Add</a>
-
-					        <a href="#" class="btn btn-primary"><i class="fa fa-sitemap">&nbsp;</i>Manage</a>
-     					 </div>
-    				</div>	
-		</div>
-		<!--Product-->
-		<div class="col-md-4">
-						<div class="card" >
-      				<div class="card-body" >
-					        <h3 class="card-title">Product</h3>
-					        <p class="card-text">Manage your categoy and add new parent and sub categoy</p>
-					        <a href="#" data-toggle="modal" data-target="#form_product" class="btn btn-primary"><i class="fa fa-puzzle-piece">&nbsp;</i>Add</a>
-
-					        <a href="#" class="btn btn-primary"><i class="fa fa-sitemap">&nbsp;</i>Manage</a>
-     					 </div>
-    				</div>	
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+						<div class="card-body">
+						<h4 class="card-title">Categories</h4>
+						<p class="card-text">Here you can manage your categories and you add new parent and sub categories</p>
+						<a href="#" data-toggle="modal" data-target="#form_category" class="btn btn-primary">Add</a>
+						<a href="manage_categories.php" class="btn btn-primary">Manage</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+						<div class="card-body">
+						<h4 class="card-title">Brands</h4>
+						<p class="card-text">Here you can manage your brand and you add new brand</p>
+						<br>
+						<a href="#" data-toggle="modal" data-target="#form_brand" class="btn btn-primary">Add</a>
+						<a href="manage_brand.php" class="btn btn-primary">Manage</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+						<div class="card-body">
+						<h4 class="card-title">Products</h4>
+						<p class="card-text">Here you can manage your prpducts and you add new products</p>
+						<a href="product.php"class="btn btn-primary">Add</a>
+						<a href="manage_product.php" class="btn btn-primary">Manage</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 
 
 <!-- Modal -->
  <?php include_once'./templates/category_model.php'; ?>
  <?php include_once'./templates/brand_model.php'; ?>
- <?php include_once'./templates/product_model.php'; ?>
+ 
 
 
 </body>
