@@ -1,6 +1,8 @@
-<?php 
+<?php
 
-
+/**
+* 
+*/
 class DBOperation
 {
 	
@@ -10,8 +12,11 @@ class DBOperation
 	{
 		include_once("../database/db.php");
 		$db = new Database();
-		$this->con = $db->connect();
-		
+		if($db->connectOracleDb()){
+			// code to connect with oracle db
+		}else{
+			$this->con = $db->connect();
+		}
 		
 	}
 
@@ -74,6 +79,8 @@ class DBOperation
 	}
 }
 
-
-
- ?>
+//$opr = new DBOperation();
+//echo $opr->addCategory(1,"Mobiles");
+//echo "<pre>";
+//print_r($opr->getAllRecord("categories"));
+?>
