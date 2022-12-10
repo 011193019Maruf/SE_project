@@ -78,7 +78,7 @@
                             <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                 <div class="category">
                             <div class="ht__cat__thumb">
-                                   <a href="product.php?ID=<?php echo $list['ID']?>">
+                                   <a href="product.php?ID=<?php echo $list['image']?>">
                                  <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list ['image']?>" alt="product images">
                                 </a>
                             </div>
