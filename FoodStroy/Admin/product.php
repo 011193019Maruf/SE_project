@@ -51,7 +51,7 @@ $res=mysqli_query($con,$sql);
                                        <th>Name</th>
                                        <th>Image</th>
                                        <th>Price</th>
-                                       
+                                       <th>Quantity</th>
                                        <th></th>
                                        
                                     </tr>

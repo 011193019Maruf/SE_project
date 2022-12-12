@@ -301,6 +301,7 @@
     line-height: 50px;
     padding: 0 36px;
     transition: 0.3s;
+    margin-top: 20px;
 }
 
 .fr__btn:hover {
@@ -1364,7 +1365,7 @@
 .ht__bradcaump__wrap {
     align-items: center;
     display: flex;
-    height: 270px;
+    height: 300px;
 }
 .breadcrumb-item {
     color: #FFFFFF;

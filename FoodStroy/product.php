@@ -17,7 +17,7 @@ $get_product=get_product($con,'','' ,$product_id);
                                   <a class="breadcrumb-item" href="index.php">Home</a>
 
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <a class="breadcrumb-item" href="index_categories.php?ID=<?php echo $get_product['0']['categories_id'] ?>">Food</a>
+                                  <a class="breadcrumb-item" href="index_categories.php?ID=<?php echo $get_product['0']['categories_id'] ?>"><?php echo $get_product['0']['categories']?></a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                                   <span class="breadcrumb-item active"><?php echo $get_product['0']['name'] ?></span>
                                 </nav>
@@ -60,13 +60,33 @@ $get_product=get_product($con,'','' ,$product_id);
                                     <div class="sin__desc">
                                         <p><span>Availability:</span> In Stock</p>
                                     </div>
-                                    <div class="sin__desc align--left">
+                                    <div class="sin__desc">
+                                        <p><span>Qty:</span> 
+                                        <select id="qty">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                        </select>
+                                        </p>
+                                    </div>
+                                     <div class="sin__desc align--left">
                                         <p><span>Categories:</span></p>
                                         <ul class="pro__cat__list">
                                             <li><a href="#"><?php echo $get_product['0']['categories']?></a></li>
                                         </ul>
                                     </div>
-                                   
+                                    
+                                    </div>
+                                    
+                                </div>
+                                <a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['ID']?>','add')">Add to cart</a>
                                    
                                     </div>
                                 </div>
