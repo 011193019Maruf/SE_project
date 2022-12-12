@@ -1367,9 +1367,9 @@
     height: 270px;
 }
 .breadcrumb-item {
-    color: #494949;
+    color: #FFFFFF;
     font-family: "Poppins",sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
     text-transform: capitalize;
 }
@@ -1381,8 +1381,8 @@
 }
 
 .brd-separetor i {
-    color: #494949;
-    font-size: 18px;
+    color: #FFFFFF;
+    font-size: 25px;
 }
 .bradcaump__inner {
     text-align: center;

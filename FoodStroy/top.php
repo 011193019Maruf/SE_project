@@ -54,7 +54,7 @@ $cat_arr[]=$row;
                                  <?php
                                  foreach($cat_arr as $list){
                                      ?>
-            <li><a href="categories.php?ID=<?php echo $list['ID']?>"><?php echo $list['categories']?></a></li>
+            <li><a href="index_categories.php?ID=<?php echo $list['ID']?>"><?php echo $list['categories']?></a></li>
                                  <?php
 
                                  } ?>

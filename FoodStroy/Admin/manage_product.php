@@ -66,7 +66,7 @@ if($msg==''){
      if($_FILES['image']['tmp_name']!=''){
 
 $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
+move_uploaded_file($_FILES['image']['tmp_name'],'../media/food/'.$image);
       $update_sql="UPDATE  food_product set categories_id='$categories_id',name='$name',price='$price',short_desc='$short_desc',description='$description',meta_title='$meta_title',meta_key='$meta_key', image='$image' WHERE ID='$ID' ";
      }else{
 
@@ -78,7 +78,7 @@ mysqli_query($con, $update_sql);
 }
 else{
   $image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
-  move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
+  move_uploaded_file($_FILES['image']['tmp_name'],'../media/food/'.$image);
 
 mysqli_query($con,"INSERT INTO food_product(categories_id,name,price,short_desc,description,meta_title,meta_key,status,image) VALUES('$categories_id','$name','$price','$short_desc','$description','$meta_title','$meta_key' ,'1','$image')");
 }

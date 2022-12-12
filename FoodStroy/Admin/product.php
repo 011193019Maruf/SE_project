@@ -66,7 +66,7 @@ $res=mysqli_query($con,$sql);
                                        <td><?php echo $row['ID'] ?></td>
                                        <td><?php echo $row['categories'] ?></td>
                                        <td><?php echo $row['name'] ?></td>
-    <td><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image'] ?>"/></td>
+    <td><img src="../media/food/<?php echo $row['image'] ?>"/></td>
                                        <td><?php echo $row['price'] ?></td>
                                       <td>
                                           <?php if($row['status']==1){

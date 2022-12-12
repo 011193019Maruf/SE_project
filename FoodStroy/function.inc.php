@@ -17,16 +17,23 @@ function get_safe_value($con, $str){
 }
 }
 
-function get_product($con,$type='', $limit=''){
+function get_product($con,$limit='',$cat_id='',$product_id=''){
 	$sql="SELECT * FROM food_product where status=1";
+	if($cat_id!=''){
+		$sql.=" AND categories_id=$cat_id";
+	}
+	if($product_id=''){
+		$sql.=" AND ID=$product_id";
+	}
 $res=mysqli_query($con,$sql);
 	$data=array();
 	while($row=mysqli_fetch_assoc($res)){
 		$data[]=$row;
 	}
-	if($type=='offer'){
+	
+	
 		$sql.="ORDER BY ID desc";
-	}
+	
 	if($limit!=''){
 		$sql.="limit $limit";
 	}
