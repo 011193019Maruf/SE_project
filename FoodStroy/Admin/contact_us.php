@@ -36,7 +36,7 @@ $res=mysqli_query($con,$sql);
                                        <th>Name</th>
                                        <th>Email</th>
                                        <th>Mobile</th>
-                                       <th>Query</th>
+                                       <th>Message</th>
                                        <th>Date</th>
                                       <th></th> 
                                     </tr>

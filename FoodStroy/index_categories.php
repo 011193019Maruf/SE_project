@@ -63,7 +63,7 @@ $get_product=get_product($con,'',$cat_id);
                             </div>
                     
                          <div class="fr__product__inner">
-             <h4><a href="product-details.html"><div> <?php echo $list ['name']?></div></a></h4>
+             <h4><a href="product.php"><div> <?php echo $list ['name']?></div></a></h4>
                        <ul class="fr__pro__prize">
                    
                         <li><?php echo $list['price']?></li>
