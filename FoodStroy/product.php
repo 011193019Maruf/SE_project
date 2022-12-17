@@ -61,7 +61,7 @@ $get_product=get_product($con,'','' ,$product_id);
                                         <p><span>Availability:</span> In Stock</p>
                                     </div>
                                     <div class="sin__desc">
-                                        <p><span>Qty:</span> 
+                                        <p><span>Quantity:</span> 
                                         <select id="qty">
                                             <option>1</option>
                                             <option>2</option>

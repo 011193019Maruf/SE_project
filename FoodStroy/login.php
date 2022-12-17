@@ -48,7 +48,7 @@ require('top.php');
                                     </div>
                                     
                                     <div class="contact-btn">
-                                        <button type="button" class="fv-btn" onclick="user_login()">Login</button>
+                                        <button type="button"  class="fv-btn" onclick="user_login()"><a href="index.php"></a>Login</button>
                                     </div>
                                 </form>
                                 <div class="form-output login_msg">
@@ -95,7 +95,7 @@ require('top.php');
                                     </div>
                                     
                                     <div class="contact-btn">
-                                        <button type="button" class="fv-btn" onclick="user_register()">Register</button>
+                                        <button type="button" class="fv-btn" onclick= "user_register()" >Register</button>
                                     </div>
                                 </form>
                                 <div class="form-output register_msg">
