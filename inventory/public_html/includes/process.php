@@ -269,7 +269,7 @@ if (isset($_POST["getNewOrderItem"])) {
 		    <td><input name="qty[]" type="text" class="form-control form-control-sm qty" required></td>
 		    <td><input name="price[]" type="text" class="form-control form-control-sm price" readonly></span>
 		    <span><input name="pro_name[]" type="hidden" class="form-control form-control-sm pro_name"></td>
-		    <td>Rs.<span class="amt">0</span></td>
+		    <td>TK.<span class="amt">0</span></td>
 	</tr>
 	<?php
 	exit();

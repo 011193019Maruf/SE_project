@@ -52,7 +52,7 @@ $totalProduct=$obj->totalProduct();
                                      <a href="index.php"><img src="images/FoodStory.png" alt="logo images"></a>
                                 </div>
                             </div>
-                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                            <div class="col-md-5 col-lg-7 col-sm-2 col-xs-3">
                             <nav class="main__menu__nav hidden-xs hidden-sm">
                              <ul class="main__menu">
                                  <li class="drop"><a href="index.php">Home</a></li>
@@ -84,20 +84,43 @@ $totalProduct=$obj->totalProduct();
                                     </nav>
                                 </div>  
                             </div>
-                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                           <div class="col-md-3 col-lg-3 col-sm-4 col-xs-4">
                                 <div class="header__right">
-                                  
+                                    <div class="header__search search search__open">
+                                        <a href="#"><i class="icon-magnifier icons"></i></a>
+                                    </div>
                                     <div class="header__account">
-                                    <?php
-                                     if (isset($_SESSION['USER_LOGIN'])) {
-                                        echo '<a href="my_order.php">My Order</a> <a href="logout.php">Logout</a> ';
+                                        <?php if(isset($_SESSION['USER_LOGIN'])){
+                                       
+                                        ?>
+                                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="">
+                                                <span class="navbar-toggler-icon"></span>
+                                              </button>
 
-                                    }else{
-                                        echo '<a href="login.php">Login/Register</a>';
-
-                                    }
-                                    ?>
-                                      
+                                              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                                <ul class="navbar-nav mr-auto">
+                                                  <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      Account
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      <a class="dropdown-item" href="my_order.php ">Order</a><br>
+                                                      <a class="dropdown-item" href="profile.php " >Profile</a><br>
+                                                      <div class="dropdown-divider"></div>
+                                                      <a class="dropdown-item" href="logout.php " >Logout</a>
+                                                    </div>
+                                                  </li>
+                                                  
+                                                </ul>
+                                              </div>
+                                            </nav>
+                                            <?php
+                                        }else{
+                                            echo '<a href="login.php" class="mr15">Login/Register</a>';
+                                        }
+                                        ?>
+                                        
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="cart.php"><i class="icon-handbag icons"></i></a>
@@ -112,3 +135,23 @@ $totalProduct=$obj->totalProduct();
             </div>
             <!-- End Mainmenu Area -->
         </header>
+        <div class="body__overlay"></div>
+        <div class="offset__wrapper">
+            <div class="search__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="search__inner">
+                                <form action="search.php" method="get">
+                                    <input placeholder="Search here... " type="text" name="str">
+                                    <button type="submit"></button>
+                                </form>
+                                <div class="search__close__btn">
+                                    <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

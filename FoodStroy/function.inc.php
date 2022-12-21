@@ -17,7 +17,7 @@ function get_safe_value($con, $str){
 }
 }
 
-function get_product($con,$limit='',$cat_id='',$product_id=''){
+function get_product($con,$limit='',$cat_id='',$product_id='',$search_str='',$sort_order=''){
 	$sql="SELECT food_product.*,admin_categorie.categories from food_product,admin_categorie where food_product.status=1 ";
 	if($cat_id!=''){
 		$sql.=" AND food_product.categories_id=$cat_id ";
@@ -26,7 +26,15 @@ function get_product($con,$limit='',$cat_id='',$product_id=''){
 		$sql.=" AND food_product.ID=$product_id ";
 	}
 	$sql.=" AND food_product.categories_id=admin_categorie.ID ";
-	$sql.=" ORDER BY food_product.ID desc";
+	if($search_str!=''){
+		$sql.=" and (food_product.name like '%$search_str%' OR food_product.description like '%$search_str%') ";
+	}
+	if($sort_order!=''){
+		$sql.=$sort_order;
+	}else{
+		$sql.=" ORDER BY food_product.ID desc";
+	}
+	
 $res=mysqli_query($con,$sql);
 	$data=array();
 	while($row=mysqli_fetch_assoc($res)){

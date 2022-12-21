@@ -3352,3 +3352,7 @@ footer.site-footer .footer-inner a {
    color: red; 
   margin-top: 15px;
 }
+.image-resize{
+
+    height: 300px;
+}

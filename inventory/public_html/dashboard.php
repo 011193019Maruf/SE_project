@@ -65,7 +65,7 @@ if (!isset($_SESSION["userid"])) {
       				<div class="card-body">
 					        <h5 class="card-title">New Orders</h5>
 					        <p class="card-text">Create New orders & Invoices</p>
-					        <a href="#" class="btn btn-primary"><i class="fa fa-pencil">&nbsp;</i>New Order</a>
+					        <a href="new_order.php" class="btn btn-primary"><i class="fa fa-pencil">&nbsp;</i>New Order</a>
      					 </div>
     				</div>
 					</div>

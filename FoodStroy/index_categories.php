@@ -1,10 +1,43 @@
-<?php require('top.php');
+<?php 
+require('top.php');
+
+if(!isset($_GET['ID']) && $_GET['ID']!=''){
+    ?>
+    <script>
+    window.location.href='index.php';
+    </script>
+    <?php
+}
 
 $cat_id=mysqli_real_escape_string($con,$_GET['ID']);
-$get_product=get_product($con,'',$cat_id);
 
- ?>
-       <div class="body__overlay"></div>
+$price_high_selected="";
+$price_low_selected="";
+$new_selected="";
+$old_selected="";
+$sort_order="";
+if(isset($_GET['sort'])){
+    $sort=mysqli_real_escape_string($con,$_GET['sort']);
+    if($sort=="price_high"){
+        $sort_order=" order by food_product.price desc ";
+        $price_high_selected="selected";    
+    }if($sort=="price_low"){
+        $sort_order=" order by food_product.price asc ";
+        $price_low_selected="selected";
+    }
+
+}
+
+if($cat_id>0){
+    $get_product=get_product($con,'',$cat_id,'','',$sort_order);
+}else{
+    ?>
+    <script>
+    window.location.href='index.php';
+    </script>
+    <?php
+}                                       
+?>   <div class="body__overlay"></div>
         <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bannar.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
@@ -32,11 +65,11 @@ $get_product=get_product($con,'',$cat_id);
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
                                 <div class="htc__select__option">
-                                    <select class="ht__select">
+                                     <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id?>','<?php echo SITE_PATH?>')" id="sort_product_id">
                                         <option>Default softing</option>
-                                        <option>Sort by popularity</option>
-                                        <option>Sort by average rating</option>
-                                        <option>Sort by newness</option>
+                                        <option value="price_low" <?php echo $price_low_selected?>>Sort by price low to high</option>
+                                        <option value="price_high" <?php echo $price_high_selected?>>Sort by price high to low</option>
+                                        <option>Sort by rating</option>
                                     </select>
                                 </div>
                                 
@@ -58,7 +91,7 @@ $get_product=get_product($con,'',$cat_id);
                                 <div class="category">
                             <div class="ht__cat__thumb">
                                    <a href="product.php?ID=<?php echo $list['ID']?>">
-                                 <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list ['image']?>" alt="product images">
+                                 <img class="image-resize" src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list ['image']?>" alt="product images">
                                 </a>
                             </div>
                     

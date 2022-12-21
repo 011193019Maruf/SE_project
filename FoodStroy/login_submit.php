@@ -12,6 +12,7 @@ if($check_user>0){
 	$_SESSION['USER_LOGIN']='yes';
 	$_SESSION['USER_ID']=$row['ID'];
 	$_SESSION['USER_NAME']=$row['name'];
+	
 	echo "valid";
 }else{
 	echo "wrong";

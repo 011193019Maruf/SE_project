@@ -11,6 +11,8 @@ if(!isset($_SESSION['cart']) || count($_SESSION['cart'])==0){
 $cart_total=0;
 
 if(isset($_POST['submit'])){
+     $name=get_safe_value($con,$_POST['name']);
+      $mobile=get_safe_value($con,$_POST['mobile']);
     $address=get_safe_value($con,$_POST['address']);
     $city=get_safe_value($con,$_POST['city']);
     $pincode=get_safe_value($con,$_POST['pincode']);
@@ -28,11 +30,11 @@ if(isset($_POST['submit'])){
     if($payment_type=='cod'){
         $payment_status='success';
     }
-    $order_status='pending';
+    $order_status='1';
     $added_on=date('Y-m-d h:i:s');
     
     
-    mysqli_query($con,"INSERT into `order`(user_id,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price) values('$user_id','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price')");
+    mysqli_query($con,"INSERT into `order`(user_id,name,mobile,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price) values('$user_id','$name','$mobile','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price')");
     
     $order_id=mysqli_insert_id($con);
     
@@ -156,6 +158,16 @@ if(isset($_POST['submit'])){
                                             <div class="bilinfo">
                                                 
                                                     <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="single-input">
+                                                                <input type="text" name="name" placeholder="Name" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="single-input">
+                                                                <input type="text" name="mobile" placeholder="Phone Number" required>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-md-12">
                                                             <div class="single-input">
                                                                 <input type="text" name="address" placeholder="Street Address" required>

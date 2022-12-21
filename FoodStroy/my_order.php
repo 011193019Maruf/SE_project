@@ -8,25 +8,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 	<?php
 }
 ?>
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner">
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.html">Home</a>
-                                  <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Thank You</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
-        <!-- cart-main-area start -->
+
         <div class="wishlist-area ptb--100 bg__white">
             <div class="container">
                 <div class="row">
@@ -46,13 +28,19 @@ if(!isset($_SESSION['USER_LOGIN'])){
                                             </tr>
                                         </thead>
                                         <tbody>
+
 											<?php
 											$uid=$_SESSION['USER_ID'];
-											$res=mysqli_query($con,"SELECT * from `order` where user_id='$uid'");
+
+			$res=mysqli_query($con,"SELECT `order`.*,order_status.name AS order_status_str from `order`,order_status where `order`.user_id='$uid' AND order_status.ID=`order`.order_status");
 											while($row=mysqli_fetch_assoc($res)){
 											?>
                                             <tr>
-												<td class="product-add-to-cart"><a href="my_order_details.php?ID=<?php echo $row['ID']?>"> <?php echo $row['ID']?></a></td>
+												<td class="product-add-to-cart"><a href="my_order_details.php?ID=<?php echo $row['ID']?>"> <?php echo $row['ID']?></a>
+                                                    <br/>
+                                                    <a href="order_pdf.php?ID=<?php echo $row['ID']?>"> PDF</a>
+
+                                                </td>
                                                 <td class="product-name"><?php echo $row['added_on']?></td>
                                                 <td class="product-name">
 												<?php echo $row['address']?><br/>
@@ -61,7 +49,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 												</td>
 												<td class="product-name"><?php echo $row['payment_type']?></td>
 												<td class="product-name"><?php echo $row['payment_status']?></td>
-												<td class="product-name"><?php echo $row['order_status']?></td>
+												<td class="product-name"><?php echo $row['order_status_str']?></td>
                                                 
                                             </tr>
                                             <?php } ?>

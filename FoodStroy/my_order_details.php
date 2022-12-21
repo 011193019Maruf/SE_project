@@ -18,7 +18,7 @@ $order_id=get_safe_value($con,$_GET['ID']);
                                 <nav class="bradcaump-inner">
                                   <a class="breadcrumb-item" href="index.html">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Thank You</span>
+                                  <span class="breadcrumb-item active">Order Details</span>
                                 </nav>
                             </div>
                         </div>
