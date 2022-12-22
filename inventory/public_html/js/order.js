@@ -79,7 +79,7 @@ $(document).ready(function(){
 		net_total = gst + sub_total;
 		net_total = net_total - discount;
 		due = net_total - paid_amt;
-		
+
 		$("#gst").val(gst);
 		$("#sub_total").val(sub_total);
 		
@@ -123,7 +123,7 @@ $(document).ready(function(){
 					}else{
 						$("#get_order_data").trigger("reset");
 
-						if (confirm("Do u want to print invoice ?")) {
+						if (confirm("Do you want to print invoice ?")) {
 							window.location.href = DOMAIN+"/includes/invoice_bill.php?invoice_no="+data+"&"+invoice;
 						}
 					}
