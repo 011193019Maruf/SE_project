@@ -50,7 +50,7 @@ die();
                      <a href="customer_users.php" >Manage User </a>
                   </li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="#" >Manage Delivery </a>
+                     <a href="delivery_boy.php" >Delivery Boy </a>
                   </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="http://localhost/FoodStroy/inventory/public_html/index.php" >Inventory  </a>
