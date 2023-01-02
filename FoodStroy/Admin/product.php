@@ -2,7 +2,13 @@
 <?php 
 
 require('top.inc.php') ;
+$condition='';
+$condition1='';
+if($_SESSION['ADMIN_ROLE']==1){
 
+$condition= " AND food_product.added_by='".$_SESSION['ADMIN_ID']."' ";
+$condition1= " AND added_by='".$_SESSION['ADMIN_ID']."' ";
+}
 
 if(isset($_GET['type']) && $_GET['type']!==''){
    $type=get_safe_value($con,$_GET['type']);
@@ -15,18 +21,19 @@ if(isset($_GET['type']) && $_GET['type']!==''){
       else{
          $status='0';
       }
-      $update_status_sql="UPDATE food_product SET status='$status' WHERE ID='$ID'";
+      $update_status_sql="UPDATE food_product SET status='$status' $condition1 WHERE ID='$ID'";
       mysqli_query($con,$update_status_sql);
    }
    if($type=='Delete'){
      
       $ID=get_safe_value($con,$_GET['ID']);
      
-      $delete_sql="DELETE FROM food_product  WHERE ID='$ID'";
+      $delete_sql="DELETE FROM food_product  WHERE ID='$ID' $condition1";
       mysqli_query($con,$delete_sql);
    }
 }
-$sql="SELECT  food_product. *, admin_categorie.categories FROM food_product,admin_categorie WHERE food_product.categories_id=admin_categorie.ID order by ID desc";
+
+$sql="SELECT  food_product. *, sub_categories.sub_categories, admin_categorie.categories FROM food_product,admin_categorie , sub_categories WHERE food_product.categories_id=admin_categorie.ID  AND sub_categories.ID=food_product.sub_categories_id $condition order by ID desc";
 $res=mysqli_query($con,$sql);
 
 ?>
@@ -48,6 +55,7 @@ $res=mysqli_query($con,$sql);
                                        <th class="serial">#</th>
                                        <th>ID</th>
                                        <th>Categories</th>
+                                       <th> Sub Categories</th>
                                        <th>Name</th>
                                        <th>Image</th>
                                        <th>Price</th>
@@ -65,6 +73,7 @@ $res=mysqli_query($con,$sql);
                
                                        <td><?php echo $row['ID'] ?></td>
                                        <td><?php echo $row['categories'] ?></td>
+                                        <td><?php echo $row['sub_categories'] ?></td>
                                        <td><?php echo $row['name'] ?></td>
     <td><img  src="../media/food/<?php echo $row['image'] ?>"/></td>
                                        <td><?php echo $row['price'] ?></td>

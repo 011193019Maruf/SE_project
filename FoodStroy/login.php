@@ -9,7 +9,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 }
 ?>
 <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bannar.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -85,33 +85,9 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
                                     </div>
                                     <div class="single-contact-form">
                                         <div class="contact-box name">
-                                            <input type="text" name="email" id="email" placeholder="Your Email*" style="width:45%">
+                                            <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
                                             
-                                            
-                                            <button type="button" class="fv-btn email_sent_otp height_60px" onclick="email_sent_otp()">Send OTP</button>
-                                            
-                                            <input type="text" id="email_otp" placeholder="OTP" style="width:45%" class="email_verify_otp">
-                                            
-                                            
-                                            <button type="button" class="fv-btn email_verify_otp height_60px" onclick="email_verify_otp()">Verify OTP</button>
-                                            
-                                            <span id="email_otp_result"></span>
-                                        </div>
-                                        <span class="field_error" id="email_error"></span>
-                                    </div>
-                                    <div class="single-contact-form">
-                                        <div class="contact-box name">
-                                            <input type="text" name="mobile" id="mobile" placeholder="Your Mobile*" style="width:45%">
-                                            
-                                            <button type="button" class="fv-btn mobile_sent_otp height_60px" onclick="mobile_sent_otp()">Send OTP</button>
-                                            
-                                            <input type="text" id="mobile_otp" placeholder="OTP" style="width:45%" class="mobile_verify_otp">
-                                            
-                                            
-                                           <button type="button" class="fv-btn mobile_verify_otp height_60px" onclick="mobile_verify_otp()">Verify OTP</button>
-                                            
-                                            <span id="mobile_otp_result"></span>
-                                            
+                                          
                                             
                                         </div>
                                         <span class="field_error" id="mobile_error"></span>

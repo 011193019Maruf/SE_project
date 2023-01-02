@@ -23,7 +23,7 @@ function send_message(){
             type:'post',
             data:'name='+name+'&email='+email+'&mobile='+mobile+'&message='+message,
       success:function(result){
-
+  result=result.trim();
         alert(result)
       }
         });
@@ -56,6 +56,7 @@ function user_register(){
             type:'post',
             data:'name='+name+'&email='+email+'&mobile='+mobile+'&password='+password,
             success:function(result){
+                result=result.trim();
                 if(result=='email_present'){
                     jQuery('#email_error').html('Email id already present');
                 }
@@ -89,6 +90,7 @@ function user_login(){
             data:'email='+email+'&password='+password,
 
             success:function(result){
+                result=result.trim();
                 if(result=='wrong'){
                     jQuery('.login_msg p').html('Please enter valid login details');
                 }
@@ -112,6 +114,7 @@ function manage_cart(pid,type){
         type:'post',
         data:'pid='+pid+'&qty='+qty+'&type='+type,
         success:function(result){
+            result=result.trim();
             if(type=='update' || type=='remove'){
                 window.location.href=window.location.href;
             }

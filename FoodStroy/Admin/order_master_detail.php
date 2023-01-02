@@ -1,6 +1,12 @@
 <?php
 require('top.inc.php');
 $order_id=get_safe_value($con,$_GET['ID']);
+$coupon_details=mysqli_fetch_assoc(mysqli_query($con,"select coupon_value,coupon_code from `order` where ID='$order_id'"));
+$coupon_value=$coupon_details['coupon_value'];
+if($coupon_value==''){
+    $coupon_value=0;
+}
+$coupon_code=$coupon_details['coupon_code'];
 if(isset($_POST['update_order_status'])){
 	$update_order_status=$_POST['update_order_status'];
 	if($update_order_status=='5'){
@@ -25,6 +31,7 @@ if(isset($_POST['update_order_status'])){
 								<thead>
 									<tr>
 										<th class="product-thumbnail">Product Name</th>
+										
 										<th class="product-thumbnail">Product Image</th>
 										<th class="product-name">Qty</th>
 										<th class="product-price">Price</th>
@@ -48,19 +55,39 @@ if(isset($_POST['update_order_status'])){
 									?>
 									<tr>
 										<td class="product-name"><?php echo $row['name']?></td>
+
 										<td class="product-name"> <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>"></td>
 										<td class="product-name"><?php echo $row['qty']?></td>
 										<td class="product-name"><?php echo $row['price']?></td>
 										<td class="product-name"><?php echo $row['qty']*$row['price']?></td>
 										
 									</tr>
-									<?php } ?>
+									<?php 
+									if($coupon_value!=''){
+									?>
 									<tr>
 										<td colspan="3"></td>
-										<td class="product-name">Total Price</td>
-										<td class="product-name"><?php echo $total_price?></td>
+										<td class="product-name">Coupon Value</td>
+										<td class="product-name">
+										<?php 
+										echo $coupon_value."($coupon_code)";
+										?></td>
 										
 									</tr>
+									<?php } ?>
+									<tr>
+									<?php }
+										if($coupon_value!=''){
+											?>
+										<td colspan="3"></td>
+										<td class="product-name">Total Price</td>
+										<td class="product-name">
+											<?php 
+												echo $total_price-$coupon_value;
+												?></td>
+										
+									</tr>
+									<?php } ?>
 								</tbody>
 							
 						</table>

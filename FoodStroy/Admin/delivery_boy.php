@@ -1,87 +1,100 @@
 <?php 
-include('top.inc.php');
+
+require('top.inc.php') ;
+
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
-	$type=get_safe_value($_GET['type']);
-	$id=get_safe_value($_GET['id']);
-	if($type=='active' || $type=='deactive'){
-		$status=1;
-		if($type=='deactive'){
-			$status=0;
-		}
-		mysqli_query($con,"update delivery_boy set status='$status' where id='$id'");
-		redirect('delivery_boy.php');
-	}
-
+   $type=get_safe_value($con,$_GET['type']);
+   if($type=='status'){
+      $operation=get_safe_value($con,$_GET['operation']);
+      $id=get_safe_value($con,$_GET['id']);
+      if($operation=='Active'){
+         $status='1';
+      }
+      else{
+         $status='0';
+      }
+      $update_status_sql="UPDATE delivery_boy SET status='$status' WHERE id='$id'";
+      mysqli_query($con,$update_status_sql);
+   }
+   if($type=='Delete'){
+     
+      $id=get_safe_value($con,$_GET['id']);
+     
+      $delete_sql="DELETE FROM delivery_boy WHERE id='$id' ";
+      mysqli_query($con,$delete_sql);
+   }
 }
-
-$sql="select * from delivery_boy order by id desc";
+$sql="SELECT * from delivery_boy  order by id asc ";
 $res=mysqli_query($con,$sql);
 
+
 ?>
-  <div class="card">
-            <div class="card-body">
-              <h1 class="grid_title">Delivery Boy </h1>
-			  <a href="manage_delivery_boy.php" class="add_link">Add Delivery</a>
-			  <div class="row grid_box">
-				
-                <div class="col-12">
-                  <div class="table-responsive">
-                    <table id="order-listing" class="table">
-                      <thead>
-                        <tr>
-                            <th width="10%">S.No #</th>
-                            <th width="35%">Name</th>
-                            <th width="25%">Mobile</th>
-							<th width="15%">Added On</th>
-                            <th width="20%">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php if(mysqli_num_rows($res)>0){
-						$i=1;
-						while($row=mysqli_fetch_assoc($res)){
-						?>
-						<tr>
-                            <td><?php echo $i?></td>
-                            <td><?php echo $row['name']?></td>
-							<td><?php echo $row['mobile']?></td>
-							<td>
+  <div class="content pb-0">
+            <div class="orders">
+                  <div class="col-xl-12">
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="box-title">Delivery Boy </h4>
+                           <h4 class="box-link"> <a href="manage_delivery_boy.php"> Add Delivery </a></h4>
+                        </div>
+                        <div class="card-body--">
+                           <div class="table-stats order-table ov-h">
+                              <table class="table ">
+                                 <thead>
+                                    <tr>
+                                       <th class="serial">#</th>
+                                       <th>Name</th>
+                                       <th>Mobile</th>
+                                      <th>Added On</th>
+                                  
+                                       <th></th>
+                                       
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 <?php if(mysqli_num_rows($res)>0){
+                                  $i=1;
+                                 while ($row=mysqli_fetch_assoc($res)) { ?>
+                                    <tr>
+                                       <td class="serial"><?php echo $i ?></td>
+               
+                                       <td><?php echo $row['name'] ?></td>
+                                       <td><?php echo $row['mobile'] ?></td>
+                                        	<td>
 							<?php 
 							$dateStr=strtotime($row['added_on']);
 							echo date('d-m-Y',$dateStr);
 							?>
 							</td>
 							<td>
-								<a href="manage_delivery_boy.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
-								<?php
-								if($row['status']==1){
-								?>
-								<a href="?id=<?php echo $row['id']?>&type=deactive"><label class="badge badge-danger hand_cursor">Active</label></a>
-								<?php
-								}else{
-								?>
-								<a href="?id=<?php echo $row['id']?>&type=active"><label class="badge badge-info hand_cursor">Deactive</label></a>
-								<?php
-								}
-								
-								?>
-							</td>
-                           
-                        </tr>
-                        <?php 
+                                          <?php if($row['status']==1){
+                                             echo "<span class='badge badge-complete'><a href='?type=status&operation=Deactive&id=".$row['id']."'>Active</a></span>&nbsp;";
+                                          }
+                                          else{
+                                            echo "<span class='badge badge-pending'><a href='?type=status&operation=Active&id=".$row['id']."'>Deactive</a></span>&nbsp;"; 
+                                          }
+                                          echo "<span class='badge badge-edit'><a href='manage_delivery_boy.php?id=".$row['id']."'>Edit</a></span>&nbsp;";
+                                            echo "<span class='badge badge-delete'><a href='?type=Delete&&id=".$row['id']."'>Delete</a></span>"; 
+                                          
+                                            ?>
+                                             
+                                          </td>
+                                    </tr>
+                                 <?php 
 						$i++;
 						} } else { ?>
 						<tr>
 							<td colspan="5">No data found</td>
 						</tr>
 						<?php } ?>
-                      </tbody>
-                    </table>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-				</div>
-              </div>
+               </div>
             </div>
-          </div>
-        
-<?php include('footer.inc.php');?>
+		  </div>
+       <?php require('footer.inc.php') ?>

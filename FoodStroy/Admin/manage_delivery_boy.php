@@ -1,5 +1,6 @@
 <?php 
-include('top.inc.php');
+require('top.inc.php') ;
+
 $msg="";
 $name="";
 $mobile="";
@@ -7,7 +8,7 @@ $password="";
 $id="";
 
 if(isset($_GET['id']) && $_GET['id']>0){
-	$id=get_safe_value($_GET['id']);
+	$id=get_safe_value($con ,$_GET['id']);
 	$row=mysqli_fetch_assoc(mysqli_query($con,"select * from delivery_boy where id='$id'"));
 	$name=$row['name'];
 	$password=$row['password'];
@@ -32,15 +33,17 @@ if(isset($_POST['submit'])){
 			
 			mysqli_query($con,"insert into delivery_boy(name,password,mobile,status,added_on) values('$name','$password','$mobile',1,'$added_on')");
 		}else{
-			mysqli_query($con,"update delivery_boy set name='$name', password='$password' , mobile='$mobile' where id='$id'");
+			mysqli_query($con,"update delivery_boy set name='$name', password='$password' , mobile='$mobile' where id='$id' $condition1 ");
 		}
 		
-		redirect('delivery_boy.php');
+header('location: delivery_boy.php');
+die();
+
 	}
 }
 ?>
 <div class="row">
-			<h1 class="grid_title ml10 ml15">Manage Delivery Boy</h1>
+			  <div class="card-header"><strong>Manage delivery boy</strong><small> Form</small></div>
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -67,4 +70,4 @@ if(isset($_POST['submit'])){
             
 		 </div>
         
-<?php include('footer.inc.php');?>
+<?php require('footer.inc.php');?>

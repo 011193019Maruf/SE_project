@@ -17,13 +17,16 @@ function get_safe_value($con, $str){
 }
 }
 
-function get_product($con,$limit='',$cat_id='',$product_id='',$search_str='',$sort_order=''){
+function get_product($con,$limit='',$cat_id='',$product_id='',$search_str='',$sort_order='',$sub_categories=''){
 	$sql="SELECT food_product.*,admin_categorie.categories from food_product,admin_categorie where food_product.status=1 ";
 	if($cat_id!=''){
 		$sql.=" AND food_product.categories_id=$cat_id ";
 	}
 	if($product_id!=''){
 		$sql.=" AND food_product.ID=$product_id ";
+	}
+	if($sub_categories!=''){
+		$sql.=" and food_product.sub_categories_id=$sub_categories ";
 	}
 	$sql.=" AND food_product.categories_id=admin_categorie.ID ";
 	if($search_str!=''){

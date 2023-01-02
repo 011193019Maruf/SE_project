@@ -29,7 +29,7 @@ $res=mysqli_query($con,$sql);
 							</thead>
 							<tbody>
 								<?php
-								$res=mysqli_query($con,"SELECT `order`.*,order_status.name as order_status_str from `order`,order_status where order_status.ID=`order`.order_status");
+								$res=mysqli_query($con,"SELECT `order`.*,order_status.name as order_status_str from `order`,order_status where order_status.ID=`order`.order_status order by `order`.ID desc");
 								while($row=mysqli_fetch_assoc($res)){
 								?>
 								<tr>

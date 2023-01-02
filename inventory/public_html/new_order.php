@@ -39,9 +39,9 @@ if (!isset($_SESSION["userid"])) {
 								</div>
 							</div>
 							<div class="form-group row">
-								<label class="col-sm-3 col-form-label" align="right">Customer Name*</label>
+								<label class="col-sm-3 col-form-label" align="right">Shop Name*</label>
 								<div class="col-sm-6">
-									<input type="text" id="cust_name" name="cust_name"class="form-control form-control-sm" placeholder="Enter Customer Name" required/>
+									<input type="text" id="cust_name" name="cust_name"class="form-control form-control-sm" placeholder="Enter Shop Name" required/>
 								</div>
 							</div>
 

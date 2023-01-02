@@ -1,16 +1,14 @@
-<?php 
-   require('connection.inc.php');
-   require('function.inc.php');
+<?php
+ob_start();
+require('connection.inc.php');
+require('function.inc.php');
+if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
 
-   if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
-
- }
- else{
-   header('location: login.php');
-die();
- }
-
- ?>
+}else{
+   header('location:login.php');
+   die();
+}
+?>
 
 <!doctype html>
 
@@ -37,27 +35,59 @@ die();
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                <ul class="nav navbar-nav">
                   <li class="menu-title">Menu</li>
+                 
+                   <li class="menu-item-has-children dropdown">
+                     <a href="product.php" >Manage Product </a>
+                  </li>
+                  <?php  if($_SESSION['ADMIN_ROLE']!=0){ ?>
+              <li class="menu-item-has-children dropdown">
+                     <a href="order_master_vendor.php" > Manage Order </a>
+                  </li>
+                 <?php } ?>
+                    <li class="menu-item-has-children dropdown">
+                     <a href="/SE_project/inventory/public_html/"> Inventory</a>
+                  </li>
+                   <li class="menu-item-has-children dropdown">
+                     <a href="delivery_boy.php" >Manage Delivery </a>
+                  </li>
+                  <?php  if($_SESSION['ADMIN_ROLE']!=1){ ?>
+                     <li class="menu-item-has-children dropdown">
+                     <a href="banner.php" > Banner</a>
+                  </li>
+                    <li class="menu-item-has-children dropdown">
+                     <a href="region_category.php" > Manage Region</a>
+                  </li>
+                  <li class="menu-item-has-children dropdown">
+                     <a href="region_product.php" > Manage Region Food</a>
+                  </li>
+                        <li class="menu-item-has-children dropdown">
+                     <a href="vendor_management.php" > Manage Restaurant</a>
+                  </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="categories.php" > Manage Categories </a>
                   </li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="product.php" >Manage Product </a>
+                     <a href="sub_categories.php" > Manage  Sub Categories </a>
                   </li>
-              <li class="menu-item-has-children dropdown">
+                  <li class="menu-item-has-children dropdown">
                      <a href="order_master.php" > Manage Order </a>
                   </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="customer_users.php" >Manage User </a>
                   </li>
+                
                   <li class="menu-item-has-children dropdown">
-                     <a href="delivery_boy.php" >Delivery Boy </a>
+                     <a href="coupon_master.php" >Manage Coupon </a>
                   </li>
-                  <li class="menu-item-has-children dropdown">
-                     <a href="http://localhost/FoodStroy/inventory/public_html/index.php" >Inventory  </a>
+                     <li class="menu-item-has-children dropdown">
+                     <a href="product_review.php" >Manage Review </a>
                   </li>
+                 
+                 
                   <li class="menu-item-has-children dropdown">
                      <a href="contact_us.php" > Contact US</a>
                   </li>
+               <?php } ?>
                </ul>
             </div>
          </nav>
@@ -76,7 +106,7 @@ die();
                   
                   <div class="user-area dropdown float-right">
 
-                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome Admin</a>
+                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome <?php echo $_SESSION['ADMIN_USERNAME']?></a>
                      <div class="user-menu dropdown-menu">
                         <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i>Logout</a>
                      </div>

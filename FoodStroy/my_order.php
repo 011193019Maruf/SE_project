@@ -32,7 +32,7 @@ if(!isset($_SESSION['USER_LOGIN'])){
 											<?php
 											$uid=$_SESSION['USER_ID'];
 
-			$res=mysqli_query($con,"SELECT `order`.*,order_status.name AS order_status_str from `order`,order_status where `order`.user_id='$uid' AND order_status.ID=`order`.order_status");
+			$res=mysqli_query($con,"SELECT `order`.*,order_status.name AS order_status_str from `order`,order_status where `order`.user_id='$uid' AND order_status.ID=`order`.order_status order by `order`.ID desc ");
 											while($row=mysqli_fetch_assoc($res)){
 											?>
                                             <tr>

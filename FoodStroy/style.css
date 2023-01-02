@@ -3518,7 +3518,6 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-weight: 700;
 }
 .order-details .ordre-details__total span.price{
-    width: 30%;
     text-align: left;
     font-weight: 700;
     font-family: "Poppins";
@@ -3584,4 +3583,16 @@ ul.htc__instagram__posts.owl-carousel li img {
 .image-resize{
 
     height: 300px;
+}
+.coupon_style{width: 100%;height: 50px;}
+.mr5{margin-right:5px;}
+
+#coupon_result{
+    padding: 33px;
+    padding-top: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#coupon_box{
+    display:none;
 }

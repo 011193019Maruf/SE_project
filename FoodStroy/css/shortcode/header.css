@@ -336,7 +336,7 @@ nav.off__canvars--menu ul li ul li a:hover {
   top: 120%;
   transition: all 0.2s ease-in-out 0s;
   visibility: hidden;
-  width: 220px;
+  width: 180px;
   z-index: 999;
 }
 .scroll-header .main__menu li.drop ul.dropdown {
@@ -375,7 +375,6 @@ nav.off__canvars--menu ul li ul li a:hover {
 .main__menu li.drop ul.dropdown li {
     margin: 0;
 }
-
 
 
 
