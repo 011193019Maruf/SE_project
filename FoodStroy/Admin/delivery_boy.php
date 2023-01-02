@@ -1,8 +1,6 @@
 <?php 
 
 require('top.inc.php') ;
-
-
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
    $type=get_safe_value($con,$_GET['type']);
    if($type=='status'){
@@ -21,11 +19,11 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
      
       $id=get_safe_value($con,$_GET['id']);
      
-      $delete_sql="DELETE FROM delivery_boy WHERE id='$id' ";
+      $delete_sql="DELETE FROM delivery_boy WHERE id='$id'";
       mysqli_query($con,$delete_sql);
    }
 }
-$sql="SELECT * from delivery_boy  order by id asc ";
+$sql="SELECT * from delivery_boy order by id asc";
 $res=mysqli_query($con,$sql);
 
 

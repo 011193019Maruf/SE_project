@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bannar.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -230,6 +230,7 @@ if(isset($_POST['submit'])){
                                 foreach($_SESSION['cart'] as $key=>$val){
                                 $productArr=get_product($con,'','',$key);
                                 $pname=$productArr[0]['name'];
+                               
                                 $price=$productArr[0]['price'];
                                 $image=$productArr[0]['image'];
                                 $qty=$val['qty'];

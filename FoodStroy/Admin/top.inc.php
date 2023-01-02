@@ -45,7 +45,7 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
                   </li>
                  <?php } ?>
                     <li class="menu-item-has-children dropdown">
-                     <a href="/SE_project/inventory/public_html/"> Inventory</a>
+                     <a href="/SE_project/inventory/public_html/index.php" > Inventory</a>
                   </li>
                    <li class="menu-item-has-children dropdown">
                      <a href="delivery_boy.php" >Manage Delivery </a>
@@ -54,17 +54,14 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
                      <li class="menu-item-has-children dropdown">
                      <a href="banner.php" > Banner</a>
                   </li>
-                    <li class="menu-item-has-children dropdown">
-                     <a href="region_category.php" > Manage Region</a>
-                  </li>
-                  <li class="menu-item-has-children dropdown">
-                     <a href="region_product.php" > Manage Region Food</a>
-                  </li>
                         <li class="menu-item-has-children dropdown">
                      <a href="vendor_management.php" > Manage Restaurant</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="categories.php" > Manage Categories </a>
+                  </li>
+                  <li class="menu-item-has-children dropdown">
+                     <a href="product_review.php" > Product Review </a>
                   </li>
                   <li class="menu-item-has-children dropdown">
                      <a href="sub_categories.php" > Manage  Sub Categories </a>
@@ -79,10 +76,6 @@ if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
                   <li class="menu-item-has-children dropdown">
                      <a href="coupon_master.php" >Manage Coupon </a>
                   </li>
-                     <li class="menu-item-has-children dropdown">
-                     <a href="product_review.php" >Manage Review </a>
-                  </li>
-                 
                  
                   <li class="menu-item-has-children dropdown">
                      <a href="contact_us.php" > Contact US</a>

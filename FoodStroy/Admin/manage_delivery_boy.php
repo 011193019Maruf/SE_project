@@ -1,6 +1,5 @@
 <?php 
 require('top.inc.php') ;
-
 $msg="";
 $name="";
 $mobile="";
@@ -33,7 +32,7 @@ if(isset($_POST['submit'])){
 			
 			mysqli_query($con,"insert into delivery_boy(name,password,mobile,status,added_on) values('$name','$password','$mobile',1,'$added_on')");
 		}else{
-			mysqli_query($con,"update delivery_boy set name='$name', password='$password' , mobile='$mobile' where id='$id' $condition1 ");
+			mysqli_query($con,"update delivery_boy set name='$name', password='$password' , mobile='$mobile' where id='$id'");
 		}
 		
 header('location: delivery_boy.php');

@@ -2,20 +2,20 @@
 
 $product_id=mysqli_real_escape_string($con,$_GET['ID']);
 
-$get_product=get_product($con,'','',$product_id,'','','');
+$get_product=get_product($con,'','' ,$product_id);
 
 if(isset($_POST['review_submit'])){
 $rating=get_safe_value($con,$_POST['rating']);
 $review=get_safe_value($con,$_POST['review']);
 
 $added_on=date('Y-m-d h:i:s');
-mysqli_query($con,"INSERT into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','".$_SESSION['USER_ID']."','$rating','$review','1','$added_on')");
+mysqli_query($con,"insert into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','".$_SESSION['USER_ID']."','$rating','$review','1','$added_on')");
 header('location:product.php?ID='.$product_id);
 die();
 }
 
 
-$product_review_res=mysqli_query($con,"SELECT customer_users.name,product_review.id,product_review.rating,product_review.review,product_review.added_on from customer_users,product_review where product_review.status=1 and product_review.user_id=customer_users.ID and product_review.product_id='$product_id' order by product_review.added_on desc");
+$product_review_res=mysqli_query($con,"select customer_users.name,product_review.id,product_review.rating,product_review.review,product_review.added_on from customer_users,product_review where product_review.status=1 and product_review.user_id=customer_users.ID and product_review.product_id='$product_id' order by product_review.added_on desc");
 
 
 
@@ -70,7 +70,9 @@ $product_review_res=mysqli_query($con,"SELECT customer_users.name,product_review
                                 </ul>
                                 <p class="pro__info"><?php echo $get_product['0']['short_desc'] ?></p>
                                 <div class="ht__pro__desc">
-                                   
+                                    <div class="sin__desc">
+                                        <p><span>Availability:</span> In Stock</p>
+                                    </div>
                                     <div class="sin__desc">
                                         <p><span>Quantity:</span> 
                                         <select id="qty">
@@ -107,7 +109,10 @@ $product_review_res=mysqli_query($con,"SELECT customer_users.name,product_review
                 </div>
             </div>
             <!-- End Product Details Top -->
-       <section class="htc__produc__decription bg__white">
+        </section>
+        <!-- End Product Details Area -->
+        <!-- Start Product Description -->
+        <section class="htc__produc__decription bg__white">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
@@ -134,74 +139,73 @@ $product_review_res=mysqli_query($con,"SELECT customer_users.name,product_review
                                 <div class="pro__tab__content__inner">
                                     <?php 
                                     if(mysqli_num_rows($product_review_res)>0){
-                                    
-                                    while($product_review_row=mysqli_fetch_assoc($product_review_res)){
-                                    ?>
-                                    
-                                    <article class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                          <div class="panel panel-default arrow left">
-                                            <div class="panel-body">
-                                              <header class="text-left">
-                                                <div><span class="comment-rating"> <?php echo $product_review_row['rating']?></span>
-                                                 (<?php echo $product_review_row['name']?>)</div>
-                                                <time class="comment-date"> 
-                                                <?php
-                                            $added_on=strtotime($product_review_row['added_on']);
-                                             echo date('d M Y',$added_on);
-                                                           ?>
-                                                
-                                                
-                                                
-                                                </time>
-                                              </header>
-                                              <div class="comment-post">
-                                                <p>
-                                                  <?php echo $product_review_row['review']?>
-                                                </p>
-                                              </div>
+                                        
+                                        while($product_review_row=mysqli_fetch_assoc($product_review_res)){
+                                            ?>
+                                            
+                                            <article class="row">
+                                                <div class="col-md-12 col-sm-12">
+                                                    <div class="panel panel-default arrow left">
+                                                        <div class="panel-body">
+                                                            <header class="text-left">
+                                                                <div><span class="comment-rating"> <?php echo $product_review_row['rating']?></span> (<?php echo $product_review_row['name']?>)</div>
+                                                                <time class="comment-date"> 
+                                                                    <?php
+                                                                    $added_on=strtotime($product_review_row['added_on']);
+                                                                    echo date('d M Y',$added_on);
+                                                                    ?>
+                                                                    
+                                                                    
+                                                                    
+                                                                </time>
+                                                            </header>
+                                                            <div class="comment-post">
+                                                                <p>
+                                                                    <?php echo $product_review_row['review']?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        <?php } }else { 
+                                            echo "<h3 class='submit_review_hint'>No review added</h3><br/>";
+                                        }
+                                        ?>
+                                        
+                                        
+                                        <h3 class="review_heading">Enter your review</h3><br/>
+                                        <?php
+                                        if(isset($_SESSION['USER_LOGIN'])){
+                                            ?>
+                                            <div class="row" id="post-review-box" style=>
+                                                <div class="col-md-12">
+                                                    <form action="" method="post">
+                                                        <select class="form-control" name="rating" required>
+                                                            <option value="">Select Rating</option>
+                                                            <option>Worst</option>
+                                                            <option>Bad</option>
+                                                            <option>Good</option>
+                                                            <option>Very Good</option>
+                                                            <option>Fantastic</option>
+                                                        </select>   <br/>
+                                                        <textarea class="form-control" cols="50" id="new-review" name="review" placeholder="Enter your review here..." rows="5"></textarea>
+                                                        <div class="text-right mt10">
+                                                            <button class="btn btn-success btn-lg" type="submit" name="review_submit">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
-                                          </div>
-                                        </div>
-                                    </article>
-                                    <?php } }else { 
-                                        echo "<h3 class='submit_review_hint'>No review added</h3><br/>";
-                                    }
-                                    ?>
-                                    
-                                    
-                                    <h3 class="review_heading">Enter your review</h3><br/>
-                                    <?php
-                                    if(isset($_SESSION['USER_LOGIN'])){
-                                    ?>
-                                    <div class="row" id="post-review-box" style=>
-                                       <div class="col-md-12">
-                                          <form action="" method="post">
-                                             <select class="form-control" name="rating" required>
-                                                  <option value="">Select Rating</option>
-                                                  <option>Worst</option>
-                                                  <option>Bad</option>
-                                                  <option>Good</option>
-                                                  <option>Very Good</option>
-                                                  <option>Fantastic</option>
-                                             </select>  <br/>
-                                             <textarea class="form-control" cols="50" id="new-review" name="review" placeholder="Enter your review here..." rows="5"></textarea>
-                                             <div class="text-right mt10">
-                                                <button class="btn btn-success btn-lg" type="submit" name="review_submit">Submit</button>
-                                             </div>
-                                          </form>
-                                       </div>
+                                        <?php } else {
+                                            echo "<span class='submit_review_hint'>Please <a href='login.php'>login</a> to submit your review</span>";
+                                        }
+                                        ?>
                                     </div>
-                                    <?php } else {
-                                        echo "<span class='submit_review_hint'>Please <a href='login.php'>login</a> to submit your review</span>";
-                                    }
-                                    ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         <!-- End Product Description -->
         <?php require('footer.php') ?>

@@ -68,7 +68,6 @@ $resBanner=mysqli_query($con,"select * from banner where status='1' order by ord
                                 <div class="category">
                             <div class="ht__cat__thumb ">
                                    <a href="product.php?ID=<?php echo $list['ID']?>">
-
                                  <img class="image-resize" src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list ['image']?>" alt="product images">
                                 </a>
                             </div>

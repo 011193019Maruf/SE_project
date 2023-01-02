@@ -36,7 +36,7 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">our address</h2>
-                                <p>United Internation University </p>
+                                <p>666 5th Ave New York, NY, United </p>
                             </div>
                         </div>
                         <div class="address">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">openning hour</h2>
-                                <p>10 AM </p>
+                                <p>666 5th Ave New York, NY, United </p>
                             </div>
                         </div>
 
